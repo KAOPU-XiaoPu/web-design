@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>web-design SKILL — Spec first, code second</title>
+  <meta name="description" content="A design SKILL for Claude Code. Feed it a PRD, a reference URL, or a screenshot. It produces a readable, editable DESIGN.md spec first, then web code where UI, visuals, motion, and responsiveness all land.">
+  <meta name="theme-color" content="#0a0b0e">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400..700&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Floating glass magnetic bar -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span data-i18n="brand">web-design</span>
+      </a>
+      <div class="nav-right">
+        <button class="lang-toggle" aria-label="Toggle language">
+          <span class="lang-zh">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+        <a href="https://github.com/KAOPU-XiaoPu/web-design" target="_blank" rel="noopener" class="nav-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.3-3.2c-.1-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.5 18.3 4.8 18.3 4.8c.7 1.6.2 2.8.1 3.2a4.7 4.7 0 0 1 1.3 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. HERO — GradientBlinds background + centered text -->
+  <header id="top" class="hero">
+    <div class="gradient-blinds" aria-hidden="true"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
+
+    <div class="hero-inner container">
+      <div class="eyebrow hero-eyebrow-anim" data-i18n="hero.eyebrow">THE DESIGN SKILL FOR CLAUDE CODE</div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.before">First a </span><span class="key-gradient" data-i18n="hero.spec">spec</span><span data-i18n="hero.comma">, </span><br>
+        <span data-i18n="hero.before2">then the </span><span class="key-gradient" data-i18n="hero.code">code</span><span data-i18n="hero.period">.</span>
+      </h1>
+      <p class="hero-sub hero-sub-anim">
+        <span data-i18n="hero.sub1">Feed it a PRD, a reference URL, or a screenshot.</span><br>
+        <span data-i18n="hero.sub2">It produces a readable, editable, portable <em>DESIGN.md</em> first.</span><br>
+        <span data-i18n="hero.sub3">Then it generates web code where UI, visuals, motion, and responsiveness all land.</span>
+      </p>
+      <div class="hero-ctas hero-ctas-anim">
+        <a href="#install" class="btn-primary" data-magnetic>
+          <span data-i18n="hero.cta1">Install now</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#why" class="btn-ghost" data-i18n="hero.cta2">Why it works this way →</a>
+      </div>
+      <div class="hero-steps hero-steps-anim">
+        <div class="step"><span class="step-num">01</span><span data-i18n="step.1">Input PRD / URL / Screenshot</span></div>
+        <div class="step-sep">→</div>
+        <div class="step"><span class="step-num">02</span><span data-i18n="step.2">Produce DESIGN.md spec</span></div>
+        <div class="step-sep">→</div>
+        <div class="step"><span class="step-num">03</span><span data-i18n="step.3">Output 100-score code</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. WHY -->
+  <section id="why" class="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" data-i18n="why.eyebrow">WHY DESIGN.MD</div>
+        <h2 class="section-h2" data-i18n="why.title">Why a spec first</h2>
+        <p class="section-sub" data-i18n="why.sub">AI writes code directly vs. spec-first, code-second — not in the same league.</p>
+      </div>
+
+      <div class="why-compare">
+        <div class="why-col why-col-bad reveal">
+          <div class="why-tag bad" data-i18n="why.bad.tag">AI writes directly</div>
+          <div class="why-demo">
+            <div class="code-line"><span class="comment">/* hero.css */</span></div>
+            <div class="code-line"><span class="prop">background:</span> <span class="val">#2a2a2a</span>;</div>
+            <div class="code-line"><span class="prop">color:</span> <span class="val">#333</span>;</div>
+            <div class="code-line"><span class="prop">padding:</span> <span class="val">12px</span>;</div>
+            <div class="code-line bad-line"><span class="comment">/* footer.css — new palette again */</span></div>
+            <div class="code-line bad-line"><span class="prop">background:</span> <span class="val">#1d1d1d</span>;</div>
+            <div class="code-line bad-line"><span class="prop">color:</span> <span class="val">rgb(45,45,45)</span>;</div>
+            <div class="code-line bad-line"><span class="prop">padding:</span> <span class="val">14px</span>;</div>
+          </div>
+          <ul class="why-ul">
+            <li data-i18n="why.bad.l1">× Colors drift between pages</li>
+            <li data-i18n="why.bad.l2">× Type sizes depend on AI memory</li>
+            <li data-i18n="why.bad.l3">× Motion tier picked on a whim</li>
+            <li data-i18n="why.bad.l4">× New tool or chat → start over</li>
+          </ul>
+        </div>
+
+        <div class="why-divider" aria-hidden="true">vs</div>
+
+        <div class="why-col why-col-good reveal">
+          <div class="why-tag good" data-i18n="why.good.tag">DESIGN.md first, then code</div>
+          <div class="why-demo demo-good">
+            <div class="code-line"><span class="comment">/* tokens from DESIGN.md */</span></div>
+            <div class="code-line"><span class="prop">--bg:</span> <span class="val accent">#0a0b0e</span>;</div>
+            <div class="code-line"><span class="prop">--text-1:</span> <span class="val accent">#ebecef</span>;</div>
+            <div class="code-line"><span class="prop">--sp-5:</span> <span class="val accent">24px</span>;</div>
+            <div class="code-line good-line"><span class="comment">/* every page references the same set */</span></div>
+            <div class="code-line good-line"><span class="sel">.hero</span> { <span class="prop">background:</span> <span class="val">var(--bg)</span>; }</div>
+            <div class="code-line good-line"><span class="sel">.footer</span> { <span class="prop">background:</span> <span class="val">var(--bg)</span>; }</div>
+          </div>
+          <ul class="why-ul">
+            <li data-i18n="why.good.l1">✓ Colors, type, spacing all named</li>
+            <li data-i18n="why.good.l2">✓ Consistent across pages</li>
+            <li data-i18n="why.good.l3">✓ Portable across AI tools</li>
+            <li data-i18n="why.good.l4">✓ Edit one DESIGN.md line, site-wide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THREE INPUTS (simple 3-column grid) -->
+  <section id="inputs" class="three-inputs">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" data-i18n="inputs.eyebrow">THREE INPUTS · ONE OUTPUT</div>
+        <h2 class="section-h2" data-i18n="inputs.title">Start from anywhere</h2>
+        <p class="section-sub" data-i18n="inputs.sub">A PRD, a reference URL, a screenshot — or any combination. The SKILL decides where to extract design cues from.</p>
+      </div>
+
+      <div class="inputs-grid">
+        <article class="input-item reveal">
+          <div class="input-preview">
+            <div class="preview-prd">
+              <div class="p-h1"># Product</div>
+              <div class="p-p">Tagline: an AI collaborator for designers</div>
+              <div class="p-h2">## Target users</div>
+              <div class="p-p">Indie designers · small teams</div>
+              <div class="p-h2">## Core pages</div>
+              <div class="p-p">Landing · Features · Pricing</div>
+            </div>
+          </div>
+          <div class="input-body">
+            <div class="input-num">01 / 03</div>
+            <h3 class="input-title" data-i18n="input.1.title">PRD document</h3>
+            <p class="input-desc" data-i18n="input.1.desc">Derives direction from positioning, audience, pages and competitors.</p>
+          </div>
+        </article>
+
+        <article class="input-item reveal">
+          <div class="input-preview">
+            <div class="preview-url">
+              <div class="url-bar">linear.app</div>
+              <div class="token-row"><span class="chip" style="background:#5E6AD2"></span>#5E6AD2</div>
+              <div class="token-row"><span class="chip" style="background:#0a0a0a"></span>#0A0A0A</div>
+              <div class="token-row"><span class="chip" style="background:#f7f8f8"></span>#F7F8F8</div>
+              <div class="token-row" style="color:#8d909c">Inter · 48/24/16</div>
+              <div class="token-row" style="color:#5EEAD4">48 tokens ✓</div>
+            </div>
+          </div>
+          <div class="input-body">
+            <div class="input-num">02 / 03</div>
+            <h3 class="input-title" data-i18n="input.2.title">Reference URL</h3>
+            <p class="input-desc" data-i18n="input.2.desc">Playwright crawler extracts palette, fonts, spacing and motion — 48 tokens in seconds.</p>
+          </div>
+        </article>
+
+        <article class="input-item reveal">
+          <div class="input-preview">
+            <div class="preview-shot">
+              <span class="shot-anno">screenshot.png</span>
+            </div>
+          </div>
+          <div class="input-body">
+            <div class="input-num">03 / 03</div>
+            <h3 class="input-title" data-i18n="input.3.title">Screenshot / Sketch</h3>
+            <p class="input-desc" data-i18n="input.3.desc">Extracts mood, temperature, density and type tone straight from pixels. Reliable fallback.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WORKFLOW (3 cards horizontal, no pin) -->
+  <section id="workflow" class="workflow">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" data-i18n="wf.eyebrow">WORKFLOW · THREE PHASES</div>
+        <h2 class="section-h2" data-i18n="wf.title">A → B → C · three phases</h2>
+        <p class="section-sub" data-i18n="wf.sub">No one-shot shortcut. Each phase leaves you an approval gate.</p>
+      </div>
+
+      <div class="phases-grid">
+        <article class="phase-card reveal">
+          <div class="phase-card-head">
+            <div class="phase-badge">A</div>
+            <div>
+              <div class="phase-step-label">PHASE A</div>
+              <div class="phase-step-name" data-i18n="wf.a.name">Understand</div>
+            </div>
+          </div>
+          <p class="phase-desc" data-i18n="wf.a.desc">Extract design cues from PRD / URL / screenshot / keywords / brand name; fallback chain has your back.</p>
+          <div class="phase-out">
+            <div class="po-h">// extracted</div>
+            <ul class="po-list">
+              <li data-i18n="wf.a.o1">· Tone keywords × 5</li>
+              <li data-i18n="wf.a.o2">· Competitor tokens × 48</li>
+              <li data-i18n="wf.a.o3">· Interaction tier suggestion</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase-card reveal">
+          <div class="phase-card-head">
+            <div class="phase-badge">B</div>
+            <div>
+              <div class="phase-step-label">PHASE B</div>
+              <div class="phase-step-name" data-i18n="wf.b.name">Produce DESIGN.md</div>
+            </div>
+          </div>
+          <p class="phase-desc" data-i18n="wf.b.desc">A full 9-section spec. Once you approve it, it lives in your project and can be edited by hand.</p>
+          <div class="phase-out">
+            <div class="po-h">// DESIGN.md · 9 sections</div>
+            <ul class="po-list">
+              <li>· Color · Type · Component</li>
+              <li>· Layout · Motion · Depth</li>
+              <li>· Do's / Don'ts · Responsive</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase-card reveal">
+          <div class="phase-card-head">
+            <div class="phase-badge">C</div>
+            <div>
+              <div class="phase-step-label">PHASE C</div>
+              <div class="phase-step-name" data-i18n="wf.c.name">Generate code</div>
+            </div>
+          </div>
+          <p class="phase-desc" data-i18n="wf.c.desc">Strictly follows the spec. Self-audits against the 100-score checklist. Diff-audits when a reference exists.</p>
+          <div class="phase-out">
+            <div class="po-h">// audit · 100-score</div>
+            <ul class="po-list">
+              <li>✓ 0 hardcoded hex</li>
+              <li data-i18n="wf.c.o2">✓ All component states covered</li>
+              <li data-i18n="wf.c.o3">✓ Responsive + reduced-motion</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WHAT'S INSIDE — 3D RollingGallery cylinder -->
+  <section id="inside" class="whats-inside">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" data-i18n="inside.eyebrow">WHAT'S INSIDE</div>
+        <h2 class="section-h2" data-i18n="inside.title">A full design asset vault</h2>
+        <p class="section-sub" data-i18n="inside.sub">The SKILL ships with its own reference library — drag to spin, hover to pause.</p>
+      </div>
+    </div>
+
+    <div class="rolling-gallery" data-autoplay="true" data-pause-on-hover="true">
+      <div class="rolling-viewport">
+        <div class="rolling-track" role="list">
+          <div class="rolling-face" style="--i:0" role="listitem">
+            <div class="rolling-card card-1">
+              <div class="rc-num">01</div>
+              <h3 class="rc-title" data-i18n="art.1.title">58 brand presets</h3>
+              <p class="rc-body" data-i18n="art.1.body">Linear · Stripe · Apple · Supabase · Vercel · Figma · Cursor · …</p>
+              <div class="rc-tags"><span class="tag">AI/ML</span><span class="tag">Dev</span><span class="tag">+4</span></div>
+            </div>
+          </div>
+          <div class="rolling-face" style="--i:1" role="listitem">
+            <div class="rolling-card card-2">
+              <div class="rc-num">02</div>
+              <h3 class="rc-title" data-i18n="art.2.title">10 style seeds</h3>
+              <p class="rc-body" data-i18n="art.2.body">Editorial · Dark tech · Minimal · Pro · Playful · Zen · Cyber · Organic · Swiss · Glass</p>
+              <div class="rc-tags"><span class="tag">Mix OK</span></div>
+            </div>
+          </div>
+          <div class="rolling-face" style="--i:2" role="listitem">
+            <div class="rolling-card card-3">
+              <div class="rc-num">03</div>
+              <h3 class="rc-title" data-i18n="art.3.title">3 interaction tiers</h3>
+              <p class="rc-body" data-i18n="art.3.body">L1 static · L2 fluid · L3 immersive (pin + 3D + WebGL)</p>
+              <div class="rc-tags"><span class="tag">L1</span><span class="tag">L2</span><span class="tag tag-warm">L3</span></div>
+            </div>
+          </div>
+          <div class="rolling-face" style="--i:3" role="listitem">
+            <div class="rolling-card card-4">
+              <div class="rc-num">04</div>
+              <h3 class="rc-title" data-i18n="art.4.title">7 scene defaults</h3>
+              <p class="rc-body" data-i18n="art.4.body">Landing · Portfolio · Blog · Dashboard · PPT · App UI · Email</p>
+              <div class="rc-tags"><span class="tag">Scene-driven</span></div>
+            </div>
+          </div>
+          <div class="rolling-face" style="--i:4" role="listitem">
+            <div class="rolling-card card-5">
+              <div class="rc-num">05</div>
+              <h3 class="rc-title" data-i18n="art.5.title">Motion library · 124</h3>
+              <p class="rc-body" data-i18n="art.5.body">Text 24 + Animations 29 + Components 32 + Backgrounds 40, curated per style.</p>
+              <div class="rc-tags"><span class="tag">MIT credited</span></div>
+            </div>
+          </div>
+          <div class="rolling-face" style="--i:5" role="listitem">
+            <div class="rolling-card card-6">
+              <div class="rc-num">06</div>
+              <h3 class="rc-title" data-i18n="art.6.title">Crawler + QA scripts</h3>
+              <p class="rc-body" data-i18n="art.6.body">Playwright viewport crawler · static token extractor · quality checklist self-audit.</p>
+              <div class="rc-tags"><span class="tag">Python</span><span class="tag">Graceful</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SHOWCASE — 3D hula-hoop perspective ring -->
+  <section id="showcase" class="showcase">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow" data-i18n="showcase.eyebrow">BUILT WITH</div>
+        <h2 class="section-h2" data-i18n="showcase.title">Made with this SKILL</h2>
+      </div>
+    </div>
+
+    <div class="dome-root reveal" data-count="10">
+      <div class="dome-main">
+        <div class="dome-stage">
+          <div class="dome-sphere">
+            <!-- tiles injected by JS -->
+          </div>
+        </div>
+        <div class="dome-overlay"></div>
+        <div class="dome-overlay dome-overlay--blur"></div>
+        <div class="dome-edge dome-edge--top"></div>
+        <div class="dome-edge dome-edge--bottom"></div>
+      </div>
+
+      <!-- image palette · JS clones these into every tile on the sphere -->
+      <template class="dome-palette">
+        <img class="dome-img" src="images/optimized/01.webp" alt="">
+        <img class="dome-img" src="images/optimized/02.webp" alt="">
+        <img class="dome-img" src="images/optimized/03.webp" alt="">
+        <img class="dome-img" src="images/optimized/04.webp" alt="">
+        <img class="dome-img" src="images/optimized/05.webp" alt="">
+        <img class="dome-img" src="images/optimized/06.webp" alt="">
+        <img class="dome-img" src="images/optimized/07.webp" alt="">
+        <img class="dome-img" src="images/optimized/08.webp" alt="">
+        <img class="dome-img" src="images/optimized/09.webp" alt="">
+        <img class="dome-img" src="images/optimized/10.webp" alt="">
+        <img class="dome-img" src="images/optimized/11.webp" alt="">
+        <img class="dome-img" src="images/optimized/12.webp" alt="">
+        <img class="dome-img" src="images/optimized/13.webp" alt="">
+        <img class="dome-img" src="images/optimized/14.webp" alt="">
+        <img class="dome-img" src="images/optimized/15.webp" alt="">
+        <img class="dome-img" src="images/optimized/16.webp" alt="">
+        <img class="dome-img" src="images/optimized/17.webp" alt="">
+        <img class="dome-img" src="images/optimized/18.webp" alt="">
+        <img class="dome-img" src="images/optimized/19.webp" alt="">
+        <img class="dome-img" src="images/optimized/20.webp" alt="">
+        <img class="dome-img" src="images/optimized/21.webp" alt="">
+        <img class="dome-img" src="images/optimized/22.webp" alt="">
+        <img class="dome-img" src="images/optimized/23.webp" alt="">
+        <img class="dome-img" src="images/optimized/24.webp" alt="">
+        <img class="dome-img" src="images/optimized/25.webp" alt="">
+        <img class="dome-img" src="images/optimized/26.webp" alt="">
+        <img class="dome-img" src="images/optimized/27.webp" alt="">
+        <img class="dome-img" src="images/optimized/28.webp" alt="">
+        <img class="dome-img" src="images/optimized/29.webp" alt="">
+        <img class="dome-img" src="images/optimized/30.webp" alt="">
+        <img class="dome-img" src="images/optimized/31.webp" alt="">
+        <img class="dome-img" src="images/optimized/32.webp" alt="">
+        <img class="dome-img" src="images/optimized/33.webp" alt="">
+        <img class="dome-img" src="images/optimized/34.webp" alt="">
+        <img class="dome-img" src="images/optimized/35.webp" alt="">
+        <img class="dome-img" src="images/optimized/36.webp" alt="">
+        <img class="dome-img" src="images/optimized/37.webp" alt="">
+        <img class="dome-img" src="images/optimized/38.webp" alt="">
+        <img class="dome-img" src="images/optimized/39.webp" alt="">
+        <img class="dome-img" src="images/optimized/40.webp" alt="">
+        <img class="dome-img" src="images/optimized/41.webp" alt="">
+        <img class="dome-img" src="images/optimized/42.webp" alt="">
+      </template>
+    </div>
+  </section>
+
+  <!-- 7. INSTALL -->
+  <section id="install" class="install">
+    <div class="container install-inner reveal">
+      <div class="eyebrow" data-i18n="install.eyebrow">INSTALL · IT'S OPEN SOURCE</div>
+      <h2 class="install-title">
+        <span data-i18n="install.free">Free</span> <span data-i18n="install.open">open-source</span>.<br>
+        <em>Clone</em> <span data-i18n="install.works">to run</span>.
+      </h2>
+      <p class="section-sub" data-i18n="install.sub">No account. No API key. No subscription.</p>
+
+      <div class="codeblock">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code class="cmd">git clone https://github.com/KAOPU-XiaoPu/web-design ~/.claude/skills/web-design</code>
+        <button class="copy-btn" data-cmd="git clone https://github.com/KAOPU-XiaoPu/web-design ~/.claude/skills/web-design">
+          <span class="copy-label" data-i18n="install.copy">Copy</span>
+          <span class="copy-toast" data-i18n="install.toast">In your clipboard →</span>
+        </button>
+      </div>
+
+      <div class="install-req">
+        <span data-i18n="install.req">Requires</span>
+        <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
+      </div>
+
+      <div class="install-ctas">
+        <a href="https://github.com/KAOPU-XiaoPu/web-design" target="_blank" rel="noopener" class="btn-primary" data-magnetic>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.3-3.2c-.1-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.5 18.3 4.8 18.3 4.8c.7 1.6.2 2.8.1 3.2a4.7 4.7 0 0 1 1.3 3.2c0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          <span data-i18n="install.github">View on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-title">web-design SKILL</div>
+        <p class="footer-tag" data-i18n="footer.tag">Phase A → B → C · DESIGN.md driven</p>
+        <p class="footer-meta">MIT License · © 2026</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-h" data-i18n="footer.credits">Credits</div>
+        <ul class="footer-list">
+          <li><a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noopener">vue-bits</a> by DavidHDev (MIT)</li>
+          <li><a href="https://github.com/VoltAgent/awesome-design-md" target="_blank" rel="noopener">awesome-design-md</a> by VoltAgent (MIT)</li>
+          <li>GSAP · OGL</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-h" data-i18n="footer.links">Links</div>
+        <ul class="footer-list">
+          <li><a href="#top" data-i18n="footer.top">Back to top</a></li>
+          <li><a href="https://github.com/KAOPU-XiaoPu/web-design" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#install" data-i18n="footer.install">Install</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

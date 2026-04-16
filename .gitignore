@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node / editors
+node_modules/
+.env
+.vscode/
+.idea/
+
+# Original screenshots — we ship only the compressed WebP copies in docs/images/optimized/
+docs/images/*.png
+docs/images/*.jpg
+docs/images/*.jpeg
+!docs/images/optimized/
