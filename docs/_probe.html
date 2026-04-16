@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><style>
+html,body{margin:0;background:#0a0b0e;overflow:hidden;}
+iframe{width:1600px;height:1000px;border:0;display:block;}
+</style></head><body>
+<iframe src="index.html" id="f"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(() => {
+    try {
+      const el = f.contentDocument.getElementById('author');
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        f.contentWindow.scrollTo(0, el.offsetTop - 80);
+      }
+    } catch(e) {}
+  }, 2500);
+});
+</script>
+</body></html>
